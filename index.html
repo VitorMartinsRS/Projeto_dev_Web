@@ -1,91 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acesse sua conta do projeto acadêmico da equipe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Login</title>
-
-    
+    <title>Entrar | Projeto da Equipe</title>
 </head>
-<body>
-    <header> 
-        <nav class="cabeça" >
-            <a href="home.html" class="link">Home</a>
-            <a href="galeria.html" class="link">Galeria</a>
-            <a href="cadastro.html" class="link">Login/Cadastro</a>
+<body class="auth-page">
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Navegação principal">
+            <a class="brand" href="home.html" aria-label="Página inicial">Projeto da Equipe</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+            <div class="nav-links" id="main-nav">
+                <a href="home.html">Equipe</a>
+                <a href="galeria.html">Galeria</a>
+                <a class="active" href="index.html">Entrar</a>
+            </div>
         </nav>
     </header>
-                
-    <main>
-        <div class="login">
-            <h1 class="login_h1">LOGIN</h1>
-            
-            <input type="text" id="login" placeholder="Login" onkeyup="avisoNomeF()">
-            
-            <p id="avisoNome" class="aviso"></p>
-            
-            <input type="password" id="senhal" placeholder="Senha" onkeyup="avisoSenhaF()">
-            
-            <p id="avisoSenha" class="aviso"></p>
-            
-            <a href="cadastro.html" class="anco" style="margin-left: 9px;">Não tenho cadastro!</a>
-            
-            <button type="button" id="botao" class="botao" onclick="logar(); return false">Entrar</button>
-        </div>
+
+    <main class="auth-main">
+        <section class="auth-card" aria-labelledby="login-title">
+            <div class="auth-heading">
+                <p class="eyebrow">Área do membro</p>
+                <h1 id="login-title">Bem-vindo de volta</h1>
+                <p>Entre com seus dados para continuar.</p>
+            </div>
+            <form id="login-form" novalidate>
+                <div class="field">
+                    <label for="login">Usuário</label>
+                    <input type="text" id="login" name="login" autocomplete="username" placeholder="Digite seu usuário" minlength="3" required>
+                    <span class="field-error" id="avisoNome"></span>
+                </div>
+                <div class="field">
+                    <label for="senhal">Senha</label>
+                    <input type="password" id="senhal" name="senha" autocomplete="current-password" placeholder="Digite sua senha" minlength="8" required>
+                    <span class="field-error" id="avisoSenha"></span>
+                </div>
+                <button type="submit" class="primary-button">Entrar</button>
+            </form>
+            <p class="auth-switch">Ainda não tem conta? <a href="cadastro.html">Criar cadastro</a></p>
+        </section>
     </main>
-    <href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">    
-    <footer>
-        <p class="imgf"><img src="midia/bolha-de-bate-papo.png" alt="">Telefone: (81) 9 7107-7286</p>
-        <p class="imgf"><img src="midia/marketing-de-email.png" alt="">E-mail: vitorrsilveriomartins@gmail.com</p>
-        <p class="menorfooder">Pagina 2024 &copy;</p>
+
+    <footer class="site-footer">
+        <p>Telefone: <a href="tel:+558971077286">(81) 97107-7286</a></p>
+        <p><a href="mailto:vitorrsilveriomartins@gmail.com">vitorrsilveriomartins@gmail.com</a></p>
+        <small>&copy; 2026 Projeto da Equipe</small>
     </footer>
-                
+
     <script>
-        function avisoNomeF(){
-    let login = document.getElementById('login').value
-    if(login.trim().length>2){
-        document.getElementById('avisoNome').innerHTML=""
-    }else{
-        document.getElementById('avisoNome').innerHTML="Mín. de 3 caracteres"
-    }
-}
-function avisoNomeF() {
-    let login = document.getElementById('login').value;
-    if (login.trim().length > 2) {
-        document.getElementById('avisoNome').innerHTML = "";
-    } else {
-        document.getElementById('avisoNome').innerHTML = "Mín. de 3 caracteres";
-    }
-}
+        const loginForm = document.querySelector('#login-form');
+        const loginInput = document.querySelector('#login');
+        const passwordInput = document.querySelector('#senhal');
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-function avisoSenhaF() {
-    let senhal = document.getElementById('senhal').value;
-    if (senhal.trim().length > 7) {
-        document.getElementById('avisoSenha').innerHTML = "";
-    } else {
-        document.getElementById('avisoSenha').innerHTML = "Mín. de 8 caracteres";
-    }
-}
+        navToggle.addEventListener('click', () => {
+            const open = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', String(!open));
+            navLinks.classList.toggle('open');
+        });
 
-function logar() {
-    var login = document.getElementById('login').value;
-    var senhal = document.getElementById('senhal').value;
-    
-    if (login == "vitor" && senhal == "12345678") {
-        location.href = "galeria.html";
-    } else if (login != "vitor" && senhal == "12345678") {
-        document.getElementById('avisoNome').innerHTML = "Login incorreto";
-    } else if (login == "vitor" && senhal != "12345678") {
-        document.getElementById('avisoSenha').innerHTML = "Senha incorreta"; 
-    }else{
-        document.getElementById('avisoSenha').innerHTML = "Usuario não cadastredo";
-    }
-}
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            document.querySelector('#avisoNome').textContent = '';
+            document.querySelector('#avisoSenha').textContent = '';
+
+            const login = loginInput.value.trim();
+            const password = passwordInput.value;
+            const savedUser = JSON.parse(localStorage.getItem('nexusUser') || 'null');
+            const validUser = savedUser ? login === savedUser.login : login === 'vitor';
+            const validPassword = savedUser ? password === savedUser.password : password === '12345678';
+
+            if (login.length < 3) {
+                document.querySelector('#avisoNome').textContent = 'Use pelo menos 3 caracteres.';
+                loginInput.focus();
+                return;
+            }
+            if (password.length < 8) {
+                document.querySelector('#avisoSenha').textContent = 'Use pelo menos 8 caracteres.';
+                passwordInput.focus();
+                return;
+            }
+            if (!validUser) {
+                document.querySelector('#avisoNome').textContent = 'Usuário não encontrado.';
+                return;
+            }
+            if (!validPassword) {
+                document.querySelector('#avisoSenha').textContent = 'Senha incorreta.';
+                return;
+            }
+            window.location.href = 'galeria.html';
+        });
     </script>
-
-    </body>
- </html>
-            
+</body>
+</html>

@@ -1,59 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stylec.css">
-    <title>Cadastro</title>
+    <meta name="description" content="Crie sua conta no projeto da equipe.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Criar conta | Projeto da Equipe</title>
 </head>
-<body>
-    <header> 
-            <nav>
-            <a href="home.html" class="link">Home</a>
-            <a href="galeria.html"class="link">Galeria</a>
-            <a href="index.html" class="link">Login/Cadastro</a>
-         </nav>
-        </header>
+<body class="auth-page">
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Navegação principal">
+            <a class="brand" href="home.html" aria-label="Página inicial">Projeto da Equipe</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+            <div class="nav-links" id="main-nav">
+                <a href="home.html">Equipe</a>
+                <a href="galeria.html">Galeria</a>
+                <a class="active" href="index.html">Entrar</a>
+            </div>
+        </nav>
+    </header>
 
-        <main>
-            <form>
-                <div class="cadastro">
-                        <h1>CADASTRO</h1>
-                    <nav class="nome">
-                            <input type="text" id="nome" placeholder="Nome"  required>
-                            <input type="text" placeholder="Sobrenome" id="sobrenome" required >
-                    </nav>
-                    <nav class="restoca">
-                            <input type="email" id="email" placeholder="e-mail" required >
-                            <input type="password" id="senha" placeholder="Senha" required >
-                    </nav>
-                    <div><a class="anco" 
-                        href="index.html">Ja tenho cadastro!</a>
-                        </div>
-
-                        <div class="campo">
-                        <input type="button" value="Deixe sua Opinião" onclick="imprime()">
-                        <p id="imprime" ></p>
-
-                        </div>
-                        
-                   
-                               
-                        <button type="submit" id="botao" >Enviar</button>
-
-                     <p class="zapzap imgf">Para mais informações click no incone e fale conosco: <a class="imgf" href="https://abrir.link/zyTbD"><img src="midia/bolha-de-bate-papo.png" ></a></p>
-                    
+    <main class="auth-main">
+        <section class="auth-card register-card" aria-labelledby="register-title">
+            <div class="auth-heading">
+                <p class="eyebrow">Novo cadastro</p>
+                <h1 id="register-title">Crie sua conta</h1>
+                <p>Preencha os dados para começar.</p>
+            </div>
+            <form id="register-form" novalidate>
+                <div class="field-grid">
+                    <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="given-name" minlength="2" required></div>
+                    <div class="field"><label for="sobrenome">Sobrenome</label><input id="sobrenome" name="sobrenome" type="text" autocomplete="family-name" minlength="2" required></div>
+                    <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+                    <div class="field"><label for="senha">Senha</label><input id="senha" name="senha" type="password" autocomplete="new-password" minlength="8" required></div>
+                </div>
+                <div class="feedback-area">
+                    <button type="button" class="text-button" id="feedback-button">Deixar uma opinião</button>
+                    <div id="feedback-field"></div>
+                </div>
+                <button type="submit" class="primary-button">Criar conta</button>
+                <p class="form-message" id="form-message" role="status"></p>
             </form>
-            
-        </main>
-        <footer>
-            <p class="imgf"><img src="midia/bolha-de-bate-papo.png" alt="">Telefone: (81) 9 7107-7286</p>
-            <p class="imgf"><img src="midia/marketing-de-email.png" alt="">E-mail: vitorrsilveriomartins@gmail.com</p>
-            <p class="menorfooder">Pagina 2024 &copy;</p>
-        </footer>
-        <script src="scripti.js"> </script>
-        <script>
-            alert('Bem Vindo!!! Cadastre-se no no site!!! E divirta-se')
-        </script>
-        </body>
-        </html>
+            <p class="auth-switch">Já possui cadastro? <a href="index.html">Entrar</a></p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Telefone: <a href="tel:+558971077286">(81) 97107-7286</a></p>
+        <p><a href="mailto:vitorrsilveriomartins@gmail.com">vitorrsilveriomartins@gmail.com</a></p>
+        <small>&copy; 2026 Projeto da Equipe</small>
+    </footer>
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            const open = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', String(!open));
+            navLinks.classList.toggle('open');
+        });
+
+        document.querySelector('#feedback-button').addEventListener('click', () => {
+            const area = document.querySelector('#feedback-field');
+            if (area.querySelector('textarea')) return;
+            area.innerHTML = '<label for="feedback">Sua opinião</label><textarea id="feedback" rows="3" placeholder="Conte o que achou do site"></textarea>';
+        });
+
+        document.querySelector('#register-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const form = event.currentTarget;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            const nome = document.querySelector('#nome').value.trim();
+            const sobrenome = document.querySelector('#sobrenome').value.trim();
+            const email = document.querySelector('#email').value.trim();
+            const password = document.querySelector('#senha').value;
+            localStorage.setItem('nexusUser', JSON.stringify({
+                login: nome.toLowerCase(),
+                name: `${nome} ${sobrenome}`,
+                email,
+                password
+            }));
+            document.querySelector('#form-message').textContent = 'Cadastro realizado! Você já pode entrar.';
+            setTimeout(() => { window.location.href = 'index.html'; }, 900);
+        });
+    </script>
+</body>
+</html>

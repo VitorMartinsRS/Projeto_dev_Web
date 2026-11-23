@@ -1,97 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça os integrantes do projeto.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <title>Document</title>
-    <link rel="stylesheet" href="styleh.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Equipe | Projeto da Equipe</title>
 </head>
 <body>
-    <header>
-        <nav class="cabeça">
-            <a href="home.html" class="link">Home</a>
-            <a href="galeria.html" class="link">Galeria</a>
-            <a href="index.html" class="link">Login/Cadastros</a>
+    <header class="site-header">
+        <nav class="nav-shell" aria-label="Navegação principal">
+            <a class="brand" href="home.html" aria-label="Página inicial">Projeto da Equipe</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+            <div class="nav-links" id="main-nav">
+                <a class="active" href="home.html">Equipe</a>
+                <a href="galeria.html">Galeria</a>
+                <a href="index.html">Entrar</a>
+            </div>
         </nav>
     </header>
-   <h1>Integrantes do grupo</h1>
-        
-    <main>
 
-        <section class="sessao-integrantes">
-            <div class="menu-container" onmouseover="abre(this)" onmouseout="fechar(this)">
-                <img src="midia/photo_5064430345599954518_y.jpg" alt="">
-                <h2>Jônatas Monteiro</h2>
-                <p>Bom eu me chamo Jônatas Monteiro tenho 18 anos moro  em Camaragibe, atualmente estou cursando o 2 período de Engenharia da Computação.
-                    Sou formado no pacote office básico 
-                    Sou uma pessoa comunicativa, Gosto de trabalhar em equipe ,busco ter empatia pelo próximo e sou ágil na resolução de problemas</p>
-            </div>
-            <div class="menu-container" onmouseover="abre(this)" onmouseout="fechar(this)">
-                <img src="midia/WhatsApp Image 2024-11-28 at 12.55.23.jpeg" alt="" class="imgimg">
-                <h2>Nicolas Carneiro</h2>
-                <p>Oi me chamo Nicolas Carneiro de lima, atualmente tenho 19 anos e moro no Recife-PE, tenho curso técnico de Administração e atualmente estou fazendo faculdade de T.I e EAD faço Marketing, no momento me encontro estagiando na área do marketing de uma faculdade, sou bastante extrovertida e não gosto muito de ficar parado.</p>
-            </div>
-            <div class="menu-container" onmouseover="abre(this)" onmouseout="fechar(this)">
-                <img src="midia/photo_5064430345599954516_y.jpg" alt=""class="imgimg">
-                <h2>Luiz Gabriel</h2>
-                <p>Me chamo Luiz Gabriel  tenho 18 anos  tenho curso técnico de mecânica atualmente estou cursando o 2 período de Sistema de Informação.
-                    Sou uma pessoa que gosto de me comunicar e trabalhar em equipe e procuro ser ágil na resolução de problemas</p>
-            </div>
+    <main class="team-page">
+        <section class="page-heading">
+            <p class="eyebrow">Nosso time</p>
+            <h1>Pessoas por trás do projeto</h1>
+            <p>Conheça os integrantes que formam o projeto.</p>
         </section>
-        <div class="space"></div>
-        <section class="sessao-integrantes2">
-            <div class="menu-container" onmouseover="abre(this)" onmouseout="fechar(this)">
-                <img src="midia/photo_5064430345599954519_y.jpg" alt=""class="imgimg">
-                <h2>Vitor Martins</h2>
-                <p>Meu nome é Vítor Roberto Silvério Martins tenho os cursos de pacote office com Excel avançado, power Bi e power query; Java básico; hardware; redes; Canva; html e css  básico e estudo engenharia da computação na universidade Maurício de Nassau sou dedicado, valorizo a amizade e  acredito que para uma mente saudável é necessário uma vida equilibrada mesmo que com altos e baixos.</p>
-            </div>
-            <div class="menu-container" onmouseover="abre(this)" onmouseout="fechar(this)">
-                
-                <img src="midia/photo_5064430345599954520_y.jpg" alt=""class="imgimg">
-                <h2>João Vitor</h2>
-                <p>meu nome é João Vitor , tenho 20 anos, moro na cidade de Carpina interior de Recife, estou cursando na Faculdade Uninasssau na área de T.I.Sou pontual, gosto sempre de aprender pra poder me tornar mais experiente, gosto de trabalhar em equipe, sou bastante comunicativo e atencioso</p>
-            </div>
-            <div class="menu-container" onmouseover="abre(this)" onmouseout="fechar(this)">
-                <img src="midia/photo_5064430345599954517_x.jpg" alt=""class="imgimg">
-                <h2>Nickolas Eduardo</h2>
-                <p>Opa meu nome e Nickolas  Eduardo tenho 18 anos tenho ensino médio completo, Atualmente estou cursando o 2 período de Sistemas de Informação na Uninassau.Sou uma pessoa que gosto de trabalhar e bastante comunicativa</p>
-            </div>
-           
-            
+
+        <section class="team-grid" aria-label="Integrantes">
+            <article class="profile-card">
+                <img src="midia/photo_5064430345599954518_y.jpg" alt="Jônatas Monteiro">
+                <div><span class="role">Engenharia da Computação</span><h2>Jônatas Monteiro</h2><p>Comunicação, trabalho em equipe e resolução ágil de problemas.</p></div>
+            </article>
+            <article class="profile-card">
+                <img src="midia/WhatsApp Image 2024-11-28 at 12.55.23.jpeg" alt="Nicolas Carneiro">
+                <div><span class="role">Tecnologia &amp; Marketing</span><h2>Nicolas Carneiro</h2><p>Estudante de TI e marketing, com perfil extrovertido e proativo.</p></div>
+            </article>
+            <article class="profile-card">
+                <img src="midia/photo_5064430345599954516_y.jpg" alt="Luiz Gabriel">
+                <div><span class="role">Sistemas de Informação</span><h2>Luiz Gabriel</h2><p>Curso técnico em mecânica e interesse em soluções colaborativas.</p></div>
+            </article>
+            <article class="profile-card">
+                <img src="midia/photo_5064430345599954519_y.jpg" alt="Vitor Martins">
+                <div><span class="role">Engenharia da Computação</span><h2>Vitor Martins</h2><p>Formação em Office, redes, hardware e desenvolvimento web básico.</p></div>
+            </article>
+            <article class="profile-card">
+                <img src="midia/photo_5064430345599954520_y.jpg" alt="João Vitor">
+                <div><span class="role">Tecnologia da Informação</span><h2>João Vitor</h2><p>Pontual, comunicativo e sempre disposto a aprender.</p></div>
+            </article>
+            <article class="profile-card">
+                <img src="midia/photo_5064430345599954517_x.jpg" alt="Nickolas Eduardo">
+                <div><span class="role">Sistemas de Informação</span><h2>Nickolas Eduardo</h2><p>Perfil comunicativo e experiência em trabalho em equipe.</p></div>
+            </article>
         </section>
-        
     </main>
-    <div class="space2" ></div>
-    <footer>
-        <p class="imgf"><img src="midia/bolha-de-bate-papo.png" alt="">Telefone: (81) 9 7107-7286</p>
-        <p class="imgf"><img src="midia/marketing-de-email.png" alt="">E-mail: vitorrsilveriomartins@gmail.com</p>
-        <p class="menorfooder">Pagina 2024 &copy;</p>
+
+    <footer class="site-footer">
+        <p>Telefone: <a href="tel:+558971077286">(81) 97107-7286</a></p>
+        <p><a href="mailto:vitorrsilveriomartins@gmail.com">vitorrsilveriomartins@gmail.com</a></p>
+        <small>&copy; 2026 Projeto da Equipe</small>
     </footer>
-
-    
-    
     <script>
-        aert('Você está no home!!!')
-        
-        function abre(element) {
-            element.style.width = '350px'; 
-            element.style.height = '490px';
-            
-}
-        
-
-        function fechar(element) {
-            element.style.width = '250px'; 
-            element.style.height = '320px'; 
-            
-        }
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            const open = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', String(!open));
+            navLinks.classList.toggle('open');
+        });
     </script>
-
-        
-
 </body>
 </html>
 

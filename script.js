@@ -1,63 +1,61 @@
-
-function avisoNomeF() {
-    let login = document.getElementById('login').value;
-    if (login.trim().length > 2) {
-        document.getElementById('avisoNome').innerHTML = "";
-    } else {
-        document.getElementById('avisoNome').innerHTML = "Mín. de 3 caracteres";
-    }
-}
-
-function avisoSenhaF() {
-    let senhal = document.getElementByb('senhal').value;
-    if (senhal.trim().length > 7) {
-        document.getElementById('avisoSenha').innerHTML = "";
-    } else {
-        document.getElementById('avisoSenha').innerHTML = "Mín. de 8 caracteres";
-    }
-}
-
-function logar() {
-    var login = document.getElementById('login').value;
-    var senhal = document.getElementById('senhal').value;
-    
-    if (login == "vitor" && senhal == "12345678") {
-        location.href = "galeria.html";
-    } else if (login != "vitor" && senhal == "12345678") {
-        document.getElementById('avisoNome').innerHTML = "Login incorreto";
-    } else if (login == "vitor" && senhal != "12345678") {
-        document.getElementById('avisoSenha').innerHTML = "Senha incorreta"; 
-    }else{
-        document.getElementById('avisoSenha').innerHTML = "Usuario não cadastredo";
-    }
-}
-
-
 import { images } from "./dados.js";
 
 const galleryContainer = document.querySelector('#gallery-container');
 const loadMoreButton = document.querySelector('#load-more');
-console.log(galleryContainer, loadMoreButton);
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-const imagesPerpage = 4;
+const imagesPerPage = 6;
 let currentImageIndex = 0;
 
-function loadImages () {
-    const pageImages = images.slice(currentImageIndex, currentImageIndex + imagesPerpage);
-    currentImageIndex += imagesPerpage;
-    
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        const open = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!open));
+        navLinks.classList.toggle('open');
+    });
+}
+
+function loadImages() {
+    const pageImages = images.slice(currentImageIndex, currentImageIndex + imagesPerPage);
+    currentImageIndex += imagesPerPage;
+
     pageImages.forEach(image => {
         const galleryItem = document.createElement('div');
         galleryItem.className = 'gallery-item';
+        galleryItem.tabIndex = 0;
 
         const imgItem = document.createElement('img');
         imgItem.src = image.src;
-        imgItem.alt = image.alt;
+        imgItem.alt = image.alt || 'Imagem da galeria';
+        imgItem.loading = 'lazy';
 
         galleryItem.appendChild(imgItem);
         galleryContainer.appendChild(galleryItem);
     });
+
+    if (currentImageIndex >= images.length) {
+        loadMoreButton.hidden = true;
+    }
 }
 
 loadImages();
 loadMoreButton.addEventListener('click', loadImages);
+
+function imprime() {
+
+    document.getElementById('imprime').innerHTML = `
+    <textarea rows="6" placeholder="De seu Feedback sobre o Site"
+                         id="cor" onkeyup="mudaCorFonte()" ></textarea>
+    `
+
+}
+
+function mudaCorFonte() {
+    let r = Math.random() * 255
+    let g = Math.random() * 255
+    let b = Math.random() * 255
+    document.getElementById('cor').style.color = `
+    rgb(${r},${g},${b})
+    `
+}
